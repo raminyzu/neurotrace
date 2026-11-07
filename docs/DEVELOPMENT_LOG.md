@@ -38,3 +38,21 @@
 **Next milestone:**
 - Understand the CHB-MIT EEG dataset structure.
 - Inspect EDF recordings and accompanying seizure annotation files.
+
+### November 7, 2026 — Dataset Analysis Milestone
+
+**Completed:**
+- Inspected metadata from all 686 CHB-MIT EDF recordings.
+- Generated the complete dataset metadata inventory.
+- Generated patient-level recording statistics.
+- Implemented reusable dataset summary functions.
+- Added automated tests for dataset analysis.
+
+**Verification:**
+- 686 EDF recordings indexed.
+- 982.94 hours of total recording duration.
+- All recordings use a 256 Hz sampling frequency.
+- 13 automated tests passed.
+
+**Next milestone:**
+- Begin EEG signal preprocessing and channel standardization.
