@@ -114,3 +114,24 @@
 - Develop seizure and non-seizure interval labeling.
 - Validate interval boundaries against recording duration.
 - Prepare reliable EEG segmentation.
+
+### November 12, 2026 — Seizure and Non-Seizure Interval Labeling
+
+**Completed:**
+- Implemented `LabeledInterval` in `src/neurotrace/labeling.py`.
+- Implemented `create_labeled_intervals()` to partition recordings into seizure and non-seizure intervals.
+- Added recording-duration and seizure-boundary validation.
+- Added checks for overlapping and out-of-order seizure intervals.
+- Supported seizures at recording boundaries and adjacent seizure intervals.
+- Ensured generated intervals cover the complete recording without gaps.
+
+**Verification:**
+- 64 automated tests passed.
+- Tested recordings with zero, one, and multiple seizures.
+- Tested invalid durations, out-of-range boundaries, overlapping intervals, and chronological ordering.
+- Verified complete recording coverage.
+
+**Next milestone:**
+- Implement EEG segmentation into fixed-duration windows.
+- Assign seizure and non-seizure labels to each window.
+- Validate segmentation against actual CHB-MIT recordings.
