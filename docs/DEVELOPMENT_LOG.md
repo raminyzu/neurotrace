@@ -135,3 +135,27 @@
 - Implement EEG segmentation into fixed-duration windows.
 - Assign seizure and non-seizure labels to each window.
 - Validate segmentation against actual CHB-MIT recordings.
+
+### November 12, 2026 — EEG Window Segmentation
+
+**Completed:**
+- Implemented `EEGSegment` in `src/neurotrace/segmentation.py`.
+- Implemented fixed-duration EEG window extraction.
+- Added configurable window duration and overlap.
+- Added automatic seizure and non-seizure label assignment.
+- Preserved sample indices, timestamps, and EEG signal data.
+- Prevented windows from crossing seizure boundaries.
+- Added validation for interval continuity, labels, and recording boundaries.
+
+**Verification:**
+- 75 automated tests passed.
+- Tested fixed-duration windows, overlap, labels, and invalid inputs.
+- Validated segmentation using the real CHB-MIT recording `chb01_03.edf`.
+- Successfully extracted 27 windows from a 60-second recording segment.
+- Each window contained 23 channels and 1,024 samples.
+- Confirmed 19 seizure windows and 8 non-seizure windows.
+
+**Next milestone:**
+- Integrate annotation reading, interval labeling, and segmentation into a unified dataset pipeline.
+- Process multiple CHB-MIT recordings.
+- Prepare patient-independent dataset organization for model development.
