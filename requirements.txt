@@ -7,3 +7,4 @@ seaborn
 scikit-learn
 mne
 pytest
+wfdb>=4.3.1

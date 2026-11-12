@@ -91,3 +91,26 @@
 - Develop and validate seizure annotation handling.
 - Establish reliable seizure and non-seizure interval labeling.
 - Design EEG segmentation and labeling strategy.
+
+### November 12, 2026 — CHB-MIT Seizure Annotation Reader
+
+**Completed:**
+- Investigated the binary structure of CHB-MIT `.edf.seizures` files.
+- Verified annotation decoding using WFDB 4.3.1.
+- Implemented `read_seizure_annotations()` in `src/neurotrace/annotations.py`.
+- Added structured seizure intervals with onset, offset, and duration.
+- Added validation for malformed annotation sequences and invalid sampling frequencies.
+- Registered WFDB as a project dependency.
+- Added automated annotation reader tests.
+
+**Verification:**
+- 45 automated tests passed.
+- CHB01_03: seizure interval 2996–3036 seconds.
+- CHB02_16+: seizure interval 2972–3053 seconds.
+- Both intervals matched the official patient summary files.
+- Multiple seizure intervals and malformed annotations tested.
+
+**Next milestone:**
+- Develop seizure and non-seizure interval labeling.
+- Validate interval boundaries against recording duration.
+- Prepare reliable EEG segmentation.
