@@ -39,7 +39,7 @@
 - Understand the CHB-MIT EEG dataset structure.
 - Inspect EDF recordings and accompanying seizure annotation files.
 
-### November 7, 2026 — Dataset Analysis Milestone
+### November 7, 2026 ï¿½ Dataset Analysis Milestone
 
 **Completed:**
 - Inspected metadata from all 686 CHB-MIT EDF recordings.
@@ -159,3 +159,25 @@
 - Integrate annotation reading, interval labeling, and segmentation into a unified dataset pipeline.
 - Process multiple CHB-MIT recordings.
 - Prepare patient-independent dataset organization for model development.
+
+### November 20, 2026 â€” Unified EEG Dataset Pipeline
+
+**Completed:**
+- Implemented `RecordingDataset` to hold processed EEG segments and recording metadata.
+- Implemented `process_recording()` to integrate EDF loading, seizure annotation reading, EEG channel selection, band-pass filtering, interval labeling, and window segmentation.
+- Added support for recordings with and without seizure annotation sidecars.
+- Preserved recording metadata, seizure intervals, labels, channel names, and extracted EEG windows.
+- Added synthetic integration tests for annotated and non-annotated recordings.
+- Added validation tests for missing and invalid EDF paths.
+
+**Verification:**
+- 79 automated tests passed.
+- Verified annotated recording processing.
+- Verified non-annotated recording processing.
+- Verified segment dimensions, labels, and recording metadata.
+- Full test suite passed.
+
+**Next milestone:**
+- Develop multi-recording dataset processing.
+- Organize processed EEG data by patient.
+- Prepare patient-independent dataset splitting while grouping CHB01 and CHB21 as the same individual.
