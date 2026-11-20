@@ -181,3 +181,60 @@
 - Develop multi-recording dataset processing.
 - Organize processed EEG data by patient.
 - Prepare patient-independent dataset splitting while grouping CHB01 and CHB21 as the same individual.
+
+## Dataset Inventory and Multi-Recording Processing
+
+### Dataset inventory
+
+Implemented `src/neurotrace/dataset.py` to inspect the complete CHB-MIT
+dataset and provide a consistent metadata inventory for all EDF recordings.
+
+Verified against the locally downloaded CHB-MIT v1.0.0 dataset:
+
+- Total EDF recordings: 686
+- Recordings with seizure annotation sidecars: 141
+- Recordings without seizure annotation sidecars: 545
+- Recordings containing the standard 17-channel montage: 683
+- Recordings with an incompatible alternate montage: 3
+- Patient folders: 24
+- Unique patient groups: 23
+
+### Montage compatibility
+
+The following recordings do not contain the standard 17-channel montage:
+
+- `chb12_27.edf`
+- `chb12_28.edf`
+- `chb12_29.edf`
+
+All three are identified as incompatible with the standard channel configuration.
+They are not silently treated as standard-montage recordings.
+
+### Patient-independent grouping
+
+Added canonical patient grouping through `get_patient_group_id()`.
+CHB01 and CHB21 are mapped to the same patient group (`chb01`) because
+they represent the same individual. This prevents recordings from that
+individual from being treated as independent subjects during patient-level
+dataset splitting.
+
+### Multi-recording processing
+
+Added `RecordingInfo` and `inspect_dataset()` for metadata inventory
+without loading complete EEG signals.
+
+Added `iter_processed_recordings()` to process compatible recordings
+one at a time. Incompatible recordings raise an error by default;
+skipping them requires the explicit `skip_incompatible=True` option.
+
+### Testing
+
+Added `tests/test_dataset.py` covering patient grouping, metadata inventory,
+annotation detection, montage compatibility, iterator behavior, and
+input validation.
+
+Verification:
+- Dataset module tests: 13 passed
+- Full project test suite: 92 passed
+- Real dataset inventory: all six expected checks passed
+- WFDB/Pandas deprecation warnings remain non-fatal.
